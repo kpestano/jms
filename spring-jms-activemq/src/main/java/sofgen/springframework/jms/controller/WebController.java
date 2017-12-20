@@ -26,8 +26,8 @@ public class WebController {
 	@Autowired
 	JmsClient jmsClient;
 	
-	@RequestMapping(value="/produce")
-	public String produce(@RequestParam("msg") String msg){
+	@RequestMapping(value="/message")
+	public String send(@RequestParam("msg") String msg){
 		System.err.println("Sending");
 		jmsClient.send(msg);
 		return "Done";

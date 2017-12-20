@@ -1,4 +1,4 @@
-package sofgen.springframework.jms.consumer;
+package sofgen.springframework.jms.receiver;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class JmsConsumer {
+public class JmsReceiver {
 	@Autowired
 	JmsTemplate jmsTemplate;
 	

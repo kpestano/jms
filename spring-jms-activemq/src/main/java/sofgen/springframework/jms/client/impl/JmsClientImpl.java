@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sofgen.springframework.jms.client.JmsClient;
-import sofgen.springframework.jms.producer.JmsProducer;
+import sofgen.springframework.jms.sender.JmsSender;
 
 /**
  * @author kpestano
@@ -15,7 +15,7 @@ import sofgen.springframework.jms.producer.JmsProducer;
 public class JmsClientImpl implements JmsClient{
 
 	@Autowired
-	JmsProducer jmsProducer;
+	JmsSender jmsProducer;
 	
 	@Override
 	public void send(String msg) {

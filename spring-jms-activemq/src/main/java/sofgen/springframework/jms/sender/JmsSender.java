@@ -1,4 +1,4 @@
-package sofgen.springframework.jms.producer;
+package sofgen.springframework.jms.sender;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class JmsProducer {
+public class JmsSender {
 	
 	@Autowired
 	JmsTemplate jmsTemplate;
