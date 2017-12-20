@@ -7,8 +7,6 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
 
-import sofgen.springframework.jms.client.Message;
-
 /**
  * @author kpestano
  *
