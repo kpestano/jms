@@ -21,14 +21,8 @@ public class JmsReceiver {
 	String destinationQueue;
 	
 	@JmsListener(destination= "${jms.queue.destination}", containerFactory = "myFactory")
-	@SendTo("jms.received")
 	public String receive(String message){
 		System.err.println(message);
 		return message;
-	}
-	
-	@JmsListener(destination = "jms.received", containerFactory = "myFactory")
-	public void receiveMessage(String message) {
-		System.err.println("Message received " + message);
 	}
 }

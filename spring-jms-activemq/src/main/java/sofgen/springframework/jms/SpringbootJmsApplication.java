@@ -32,7 +32,6 @@ public class SpringbootJmsApplication {
 			DefaultJmsListenerContainerFactoryConfigurer configurer) {
 		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
 		factory.setMessageConverter(jacksonJmsMessageConverter());
-		factory.setDestinationResolver(new DynamicDestinationResolver());
 		factory.setConnectionFactory(connectionFactory);
 		factory.setConcurrency("1-1");
 		configurer.configure(factory, connectionFactory);
