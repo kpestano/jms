@@ -130,15 +130,15 @@
 	<wsdl:service name="MyCalculators">
 		<wsdl:port name="MyCalculatorsHttpSoap11Endpoint" binding="ns:MyCalculatorsSoap11Binding">
 			<soap:address
-				location="http://localhost:8080/CalculatorWS/services/MyCalculators.MyCalculatorsHttpSoap11Endpoint/" />
+				location="http://10.231.53.132:8080/CalculatorWS/services/MyCalculators.MyCalculatorsHttpSoap11Endpoint/" />
 		</wsdl:port>
 		<wsdl:port name="MyCalculatorsHttpSoap12Endpoint" binding="ns:MyCalculatorsSoap12Binding">
 			<soap12:address
-				location="http://localhost:8080/CalculatorWS/services/MyCalculators.MyCalculatorsHttpSoap12Endpoint/" />
+				location="http://10.231.53.132:8080/CalculatorWS/services/MyCalculators.MyCalculatorsHttpSoap12Endpoint/" />
 		</wsdl:port>
 		<wsdl:port name="MyCalculatorsHttpEndpoint" binding="ns:MyCalculatorsHttpBinding">
 			<http:address
-				location="http://localhost:8080/CalculatorWS/services/MyCalculators.MyCalculatorsHttpEndpoint/" />
+				location="http://10.231.53.132:8080/CalculatorWS/services/MyCalculators.MyCalculatorsHttpEndpoint/" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

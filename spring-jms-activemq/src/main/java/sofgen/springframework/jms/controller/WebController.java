@@ -3,7 +3,7 @@ package sofgen.springframework.jms.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -18,9 +18,9 @@ public class WebController {
 	JmsTemplate jmsTemplate;
 	
 	@GetMapping(value="/message")
-	public String send(@RequestParam("msg") String msg){
+	public String send(@RequestBody Calculator cal){
 		System.err.println("Sending");
-		jmsTemplate.convertAndSend("SAMPLE-JMS", msg);
+		jmsTemplate.convertAndSend("SAMPLE-JMS", cal);
 		return "Done";
 	}
 }
