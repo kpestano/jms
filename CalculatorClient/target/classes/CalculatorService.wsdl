@@ -1,0 +1,144 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:ns="http://pkg.chienvh" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+	targetNamespace="http://pkg.chienvh">
+	<wsdl:documentation>Please Type your service description here</wsdl:documentation>
+	<wsdl:types>
+		<xs:schema attributeFormDefault="qualified"
+			elementFormDefault="qualified" targetNamespace="http://pkg.chienvh">
+			<xs:element name="subtract">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="num1" type="xs:double" />
+						<xs:element name="num2" type="xs:double" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="subtractResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:double" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="add">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="num1" type="xs:double" />
+						<xs:element name="num2" type="xs:double" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return" type="xs:double" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="addRequest">
+		<wsdl:part name="parameters" element="ns:add" />
+	</wsdl:message>
+	<wsdl:message name="addResponse">
+		<wsdl:part name="parameters" element="ns:addResponse" />
+	</wsdl:message>
+	<wsdl:message name="subtractRequest">
+		<wsdl:part name="parameters" element="ns:subtract" />
+	</wsdl:message>
+	<wsdl:message name="subtractResponse">
+		<wsdl:part name="parameters" element="ns:subtractResponse" />
+	</wsdl:message>
+	<wsdl:portType name="MyCalculatorsPortType">
+		<wsdl:operation name="add">
+			<wsdl:input message="ns:addRequest" wsaw:Action="urn:add" />
+			<wsdl:output message="ns:addResponse" wsaw:Action="urn:addResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="subtract">
+			<wsdl:input message="ns:subtractRequest" wsaw:Action="urn:subtract" />
+			<wsdl:output message="ns:subtractResponse" wsaw:Action="urn:subtractResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="MyCalculatorsSoap11Binding" type="ns:MyCalculatorsPortType">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+		<wsdl:operation name="add">
+			<soap:operation soapAction="urn:add" style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="subtract">
+			<soap:operation soapAction="urn:subtract" style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="MyCalculatorsSoap12Binding" type="ns:MyCalculatorsPortType">
+		<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+		<wsdl:operation name="add">
+			<soap12:operation soapAction="urn:add" style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="subtract">
+			<soap12:operation soapAction="urn:subtract" style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="MyCalculatorsHttpBinding" type="ns:MyCalculatorsPortType">
+		<http:binding verb="POST" />
+		<wsdl:operation name="add">
+			<http:operation location="add" />
+			<wsdl:input>
+				<mime:content type="application/xml" part="parameters" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:content type="application/xml" part="parameters" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="subtract">
+			<http:operation location="subtract" />
+			<wsdl:input>
+				<mime:content type="application/xml" part="parameters" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:content type="application/xml" part="parameters" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="MyCalculators">
+		<wsdl:port name="MyCalculatorsHttpSoap11Endpoint" binding="ns:MyCalculatorsSoap11Binding">
+			<soap:address
+				location="http://localhost:8080/CalculatorWS/services/MyCalculators.MyCalculatorsHttpSoap11Endpoint/" />
+		</wsdl:port>
+		<wsdl:port name="MyCalculatorsHttpSoap12Endpoint" binding="ns:MyCalculatorsSoap12Binding">
+			<soap12:address
+				location="http://localhost:8080/CalculatorWS/services/MyCalculators.MyCalculatorsHttpSoap12Endpoint/" />
+		</wsdl:port>
+		<wsdl:port name="MyCalculatorsHttpEndpoint" binding="ns:MyCalculatorsHttpBinding">
+			<http:address
+				location="http://localhost:8080/CalculatorWS/services/MyCalculators.MyCalculatorsHttpEndpoint/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
